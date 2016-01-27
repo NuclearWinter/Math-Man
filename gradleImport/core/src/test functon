@@ -1,0 +1,26 @@
+ 	if (System.currentTimeMillis() - deltaCheck > .016666667) { //This is so that it displays at 60fps
+    		if (mathMan.getY() > Gdx.graphics.getHeight() || mathMan.getY() <= 0) { //If it is past either side of the Y axis
+	    		playerY = Gdx.graphics.getHeight()/2; //Change player Y to equal half of the height
+	    		//mathMan.setY(playerY); //Move the player here
+	    	}
+	    	
+	    	else if (mathMan.getY() < playerY) { //If the player's position is less than where they touched
+	    		playerY = mathMan.getY() - 2; //Change playerY to be 2 units up
+	   			//mathMan.setY(playerY); //Move the player
+	   		}
+	    	else if (mathMan.getY() > playerY) { //If the player's position is greater than where they touched
+	   			playerY = mathMan.getY() + 2; //Change playerY to be 2 units down
+    			//mathMan.setY(playerY); //Move the player
+    		}
+    		
+	    	if (playerX >= Gdx.graphics.getWidth()) { //If it is past the end of the x-axis
+	    		mathMan.setX(mathMan.getOriginX()); //Set its X to the starting point
+	    		mathMan.setY(mathMan.getOriginY()); //And its Y to the starting point
+	    		playerX = mathMan.getOriginX();  //Set player X to its new cordinates
+	    		playerY = mathMan.getOriginY(); //Set player Y to its new cordinates
+	    		}
+	    	else { //If it is not past the x-axis
+	    		playerX += 3; //Add three to the player's position
+	    		mathMan.setX(playerX); //Move the player to that position
+	    		mathMan.setY(playerY);
+	    	}
